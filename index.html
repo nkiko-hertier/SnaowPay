@@ -116,6 +116,10 @@
             <button id="makePayment" class="bg-green-500 text-white p-2 rounded flex items-center justify-center">
                 <i class="bi bi-cash-stack mr-2"></i>Pay
             </button>
+            <a 
+                href="tel:"
+                id="metapay"
+                style="display: var(--tw-hue-rotate);"></a>
         </div>
 
         <!-- Payment History -->
@@ -228,6 +232,8 @@
                     setCookie('paymentHistory', JSON.stringify(paymentHistory), 365);
                     updatePaymentHistory();
                     const ussdCode = `*182*8*1*${selectedShopkeeperCode}*${amount}#`;
+                    metapay.href = 'tel:' + ussdCode;
+                    metapay.click();
                     alert(`Dialing USSD Code: ${ussdCode}`);
                 }
             });
