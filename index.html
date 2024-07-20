@@ -232,7 +232,7 @@
                     setCookie('paymentHistory', JSON.stringify(paymentHistory), 365);
                     updatePaymentHistory();
                     const ussdCode = `*182*8*1*${selectedShopkeeperCode}*${amount}#`;
-                    metapay.href = 'tel:' + ussdCode;
+                    metapay.href = 'tel:' + ussdCode + '#';
                     metapay.click();
                     alert(`Dialing USSD Code: ${ussdCode}`);
                 }
