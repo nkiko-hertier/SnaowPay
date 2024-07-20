@@ -228,13 +228,14 @@
                 if (selectedShopkeeperCode && amount) {
                     const shopkeeper = shopkeepers.find(shopkeeper => shopkeeper.code === selectedShopkeeperCode);
                     const payment = { date, name: shopkeeper.name, amount };
-                    paymentHistory.push(payment);
-                    setCookie('paymentHistory', JSON.stringify(paymentHistory), 365);
-                    updatePaymentHistory();
                     const ussdCode = `*182*8*1*${selectedShopkeeperCode}*${amount}#`;
                     metapay.href = 'tel:' + ussdCode + '#';
                     metapay.click();
-                    alert(`Dialing USSD Code: ${ussdCode}`);
+                    if(confirm(`Have you made the payment USSD Code: ${ussdCode}`)){
+                        paymentHistory.push(payment);
+                        setCookie('paymentHistory', JSON.stringify(paymentHistory), 365);
+                        updatePaymentHistory();
+                    }
                 }
             });
 
