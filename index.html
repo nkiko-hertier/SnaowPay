@@ -231,7 +231,8 @@
                     const ussdCode = `*182*8*1*${selectedShopkeeperCode}*${amount}#`;
                     metapay.href = 'tel:' + ussdCode + '#';
                     metapay.click();
-                    if(confirm(`Have you made the payment USSD Code: ${ussdCode}`)){
+                    const Mypen = confirm(`Have you made the payment USSD Code: ${ussdCode}`);
+                    if(Mypen){
                         paymentHistory.push(payment);
                         setCookie('paymentHistory', JSON.stringify(paymentHistory), 365);
                         updatePaymentHistory();
